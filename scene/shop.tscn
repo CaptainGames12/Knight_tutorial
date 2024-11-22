@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://u82qxrurjsn3"]
+
+[ext_resource type="FontFile" uid="uid://c4eiklrv4x81p" path="res://brackeys_platformer_assets/fonts/PixelOperator8.ttf" id="1_f4d3d"]
+[ext_resource type="Script" path="res://scene/shop.gd" id="1_sc0pg"]
+[ext_resource type="Texture2D" uid="uid://3paj4wahonr8" path="res://brackeys_platformer_assets/sprites/fruit.png" id="2_b1n03"]
+[ext_resource type="AudioStream" uid="uid://7llfsnstscv1" path="res://brackeys_platformer_assets/sounds/power_up.wav" id="4_ie8v8"]
+
+[node name="shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_sc0pg")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -71.0
+offset_right = 86.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 103.0
+offset_right = 101.0
+offset_bottom = 127.0
+theme_override_fonts/font = ExtResource("1_f4d3d")
+action_mode = 0
+text = "5$"
+
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(82, 78)
+scale = Vector2(2.92308, 3.24923)
+texture = ExtResource("2_b1n03")
+region_enabled = true
+region_rect = Rect2(1.03652, 50.518, 13.3333, 13.9259)
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 23.0
+offset_right = 162.0
+offset_bottom = 43.0
+theme_override_fonts/font = ExtResource("1_f4d3d")
+text = "Bomb peach
+"
+horizontal_alignment = 1
+
+[node name="PowerUp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ie8v8")
+
+[connection signal="pressed" from="Panel/Button" to="." method="_on_button_pressed"]
